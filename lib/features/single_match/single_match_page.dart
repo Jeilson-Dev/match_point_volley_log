@@ -40,8 +40,30 @@ class _SingleMatchPageState extends State<SingleMatchPage> {
                   isPlaying: model!.isPlaying,
                   blink: model!.seconds % 2 == 0,
                   onStart: model!.onStart,
-                  onStop: model!.onStop,
                   onPause: model!.onPause,
+                  onStop: model!.onStop,
+                  onReset: () {
+                    VLAlertDialog(title: 'Deseja resetar a partida?', message: 'Isso irá zerar o placar e o timer, tem certeza?', actions: [
+                      TextButton(
+                        child: Text(
+                          'Não',
+                          style: VLTextStyle.dialogButton(color: VLColors.green500),
+                        ),
+                        onPressed: () => Navigator.of(context).pop(),
+                      ),
+                      TextButton(
+                        child: Text(
+                          'Sim',
+                          style: VLTextStyle.dialogButton(color: VLColors.destructive500),
+                        ),
+                        onPressed: () {
+                          model!.onReset();
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ]).show(context);
+                  },
+                  // model!.onReset,
                   minutes: model!.minutes.toString().padLeft(2, '0'),
                   seconds: model!.seconds.toString().padLeft(2, '0'),
                 ),
@@ -49,8 +71,8 @@ class _SingleMatchPageState extends State<SingleMatchPage> {
                 Expanded(
                   child: Row(
                     children: [
-                      IndividualScoreWidget(teamName: 'teamName', teamScore: model!.teamAScore),
-                      IndividualScoreWidget(teamName: 'teamName', teamScore: model!.teamAScore),
+                      IndividualScoreWidget(team: model!.teamA, teamWithBallPossession: model!.teamWithBallPossession),
+                      IndividualScoreWidget(team: model!.teamB, teamWithBallPossession: model!.teamWithBallPossession),
                     ],
                   ),
                 )

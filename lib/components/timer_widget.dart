@@ -9,6 +9,7 @@ class TimerWidget extends StatelessWidget {
     required this.onStart,
     required this.onPause,
     required this.onStop,
+    required this.onReset,
     required this.blink,
   });
   final String minutes;
@@ -18,6 +19,7 @@ class TimerWidget extends StatelessWidget {
   final Function() onStart;
   final Function() onPause;
   final Function() onStop;
+  final Function() onReset;
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +51,8 @@ class TimerWidget extends StatelessWidget {
               CircleButton(
                 backgroundColor: VLColors.green400,
                 iconColor: VLColors.green700,
-                onPress: onStop,
-                icon: Icons.stop,
+                onPress: isPlaying ? onStop : onReset,
+                icon: isPlaying ? Icons.stop : Icons.refresh_outlined,
               ),
             ],
           ),

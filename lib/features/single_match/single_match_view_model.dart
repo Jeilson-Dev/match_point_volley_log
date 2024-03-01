@@ -1,23 +1,14 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
+import 'package:match_point_volley_log/models/dto.dart';
 
 class SingleMatchViewModel with ChangeNotifier {
   int minutes = 0;
   int seconds = 0;
 
-  String _teamAName = '';
-  String _teamBName = '';
-  int _teamAScore = 0;
-  int _teamBScore = 0;
-
-  String get teamAName => _teamAName;
-  String get teamBName => _teamBName;
-
-  int get teamAScore => _teamAScore;
-  int get teamBScore => _teamBScore;
-
-  set teamAName(String name) => _teamAName = name;
-  set teamBName(String name) => _teamBName = name;
+  TeamDto teamA = TeamDto.fixture().copyWith(name: 'Time A', isPlayerOne: true);
+  TeamDto teamB = TeamDto.fixture().copyWith(name: 'Time B');
+  TeamDto teamWithBallPossession = TeamDto.fixture();
 
   bool get isPlaying => timer != null ? timer!.isActive : false;
 
@@ -52,23 +43,41 @@ class SingleMatchViewModel with ChangeNotifier {
     }
   }
 
+  void onReset() {
+    onStop();
+    teamA = teamA.copyWith(score: 0);
+    teamB = teamB.copyWith(score: 0);
+    teamWithBallPossession = teamA;
+    notifyListeners();
+  }
+
   void incrementTeamAScore() {
-    _teamAScore++;
+    final newScore = teamA.score + 1;
+    teamA = teamA.copyWith(score: newScore);
+    teamWithBallPossession = teamA;
     notifyListeners();
   }
 
   void incrementTeamBScore() {
-    _teamBScore++;
+    final newScore = teamB.score + 1;
+    teamB = teamB.copyWith(score: newScore);
+    teamWithBallPossession = teamB;
     notifyListeners();
   }
 
   void decrementTeamAScore() {
-    if (_teamAScore > 0) _teamAScore--;
+    if (teamA.score > 0) {
+      final newScore = teamA.score - 1;
+      teamA = teamA.copyWith(score: newScore);
+    }
     notifyListeners();
   }
 
   void decrementTeamBScore() {
-    if (_teamBScore > 0) _teamBScore--;
+    if (teamB.score > 0) {
+      final newScore = teamB.score - 1;
+      teamB = teamB.copyWith(score: newScore);
+    }
     notifyListeners();
   }
 }

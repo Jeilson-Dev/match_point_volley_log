@@ -11,4 +11,5 @@ class PlayerDto with _$PlayerDto {
   }) = _PlayerDto;
 
   factory PlayerDto.fromJson(Map<String, Object?> json) => _$PlayerDtoFromJson(json);
+  factory PlayerDto.fixture() => const PlayerDto(id: 'player_id', name: 'Player Name');
 }
