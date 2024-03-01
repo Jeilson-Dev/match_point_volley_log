@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:match_point_volley_log/features/score/score_page.dart';
+import 'package:match_point_volley_log/features/single_match/single_match_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ScorePage.create(),
+      home: SingleMatchPage.create(),
       debugShowCheckedModeBanner: false,
     );
   }

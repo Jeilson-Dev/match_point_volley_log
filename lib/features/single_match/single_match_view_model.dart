@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 
-class ScoreViewModel with ChangeNotifier {
+class SingleMatchViewModel with ChangeNotifier {
   int minutes = 0;
   int seconds = 0;
 

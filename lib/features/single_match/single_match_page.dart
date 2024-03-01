@@ -1,21 +1,21 @@
 import 'package:match_point_volley_log/components/individual_score_widget.dart';
 import 'package:match_point_volley_log/core/core.dart';
-import 'package:match_point_volley_log/features/score/score_view_model.dart';
+import 'package:match_point_volley_log/features/single_match/single_match_view_model.dart';
 
-class ScorePage extends StatefulWidget {
-  const ScorePage({super.key});
+class SingleMatchPage extends StatefulWidget {
+  const SingleMatchPage({super.key});
 
   static Widget create() => ChangeNotifierProvider(
-        create: (context) => ScoreViewModel(),
-        child: const ScorePage(),
+        create: (context) => SingleMatchViewModel(),
+        child: const SingleMatchPage(),
       );
 
   @override
-  State<ScorePage> createState() => _ScorePageState();
+  State<SingleMatchPage> createState() => _SingleMatchPageState();
 }
 
-class _ScorePageState extends State<ScorePage> {
-  ScoreViewModel? model;
+class _SingleMatchPageState extends State<SingleMatchPage> {
+  SingleMatchViewModel? model;
 
   @override
   void initState() {
