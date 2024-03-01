@@ -24,7 +24,7 @@ remove-goldens-failures :
 # BUILD
 
 flutter-build :
-	flutter build appbundle | sed -n "s/.*Built \(.*\) (.*/\1/p" | tr -d '\n' >> aab_path.tmp
+	flutter build appbundle
 
 android-fastlane :
 	cd android && fastlane android
