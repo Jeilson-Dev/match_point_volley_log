@@ -1,3 +1,4 @@
+import 'package:match_point_volley_log/components/individual_score_widget.dart';
 import 'package:match_point_volley_log/core/core.dart';
 import 'package:match_point_volley_log/features/score/score_view_model.dart';
 
@@ -45,40 +46,13 @@ class _ScorePageState extends State<ScorePage> {
                   seconds: model!.seconds.toString().padLeft(2, '0'),
                 ),
                 const SizedBox(height: 50),
-                Row(children: [
-                  ScoreTitleWidget(
-                    text: model!.teamAName,
-                    ballPossession: false,
-                    color: VLColors.green700,
-                    elevation: 10,
-                    textColor: VLColors.green50,
+                Expanded(
+                  child: Row(
+                    children: [
+                      IndividualScoreWidget(teamName: 'teamName', teamScore: model!.teamAScore),
+                      IndividualScoreWidget(teamName: 'teamName', teamScore: model!.teamAScore),
+                    ],
                   ),
-                  const SizedBox(width: 10),
-                  ScoreTitleWidget(
-                    text: model!.teamBName,
-                    ballPossession: true,
-                    color: VLColors.green50,
-                    elevation: 10,
-                    textColor: VLColors.green700,
-                  ),
-                ]),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Score(
-                      score: '${model!.teamAScore}',
-                      ballPossession: false,
-                      color: VLColors.green700,
-                      textColor: VLColors.green50,
-                    ),
-                    Score(
-                      score: '${model!.teamBScore}',
-                      ballPossession: true,
-                      color: VLColors.green50,
-                      textColor: VLColors.green700,
-                    ),
-                  ],
                 )
               ],
             ),

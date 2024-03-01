@@ -10,7 +10,8 @@ class ScoreTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Material(
         color: color,
         borderRadius: const BorderRadius.all(Radius.circular(4)),
