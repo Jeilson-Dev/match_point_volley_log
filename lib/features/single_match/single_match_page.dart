@@ -43,17 +43,17 @@ class _SingleMatchPageState extends State<SingleMatchPage> {
                   onPause: model!.onPause,
                   onStop: model!.onStop,
                   onReset: () {
-                    VLAlertDialog(title: 'Deseja resetar a partida?', message: 'Isso irá zerar o placar e o timer, tem certeza?', actions: [
+                    VLAlertDialog(title: AppLocalizations.of(context)!.resetScoreTitle, message: AppLocalizations.of(context)!.resetScoreMessage, actions: [
                       TextButton(
                         child: Text(
-                          'Não',
+                          AppLocalizations.of(context)!.resetScoreNo,
                           style: VLTextStyle.dialogButton(color: VLColors.green500),
                         ),
                         onPressed: () => Navigator.of(context).pop(),
                       ),
                       TextButton(
                         child: Text(
-                          'Sim',
+                          AppLocalizations.of(context)!.resetScoreYes,
                           style: VLTextStyle.dialogButton(color: VLColors.destructive500),
                         ),
                         onPressed: () {
