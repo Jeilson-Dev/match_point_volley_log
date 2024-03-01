@@ -33,20 +33,11 @@ class TimerWidget extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  SizedBox(width: 65, child: Text(minutes, style: VLTextStyle.timer(color: VLColors.green700))),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 6.0),
-                    child: SizedBox(
-                      width: 15,
-                      child: Center(
-                        child: Text(
-                          blink ? ': ' : ' ',
-                          style: VLTextStyle.timer(color: VLColors.green700),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 70, child: Text(seconds, style: VLTextStyle.timer(color: VLColors.green700))),
+                  _DigitWidget(digit: minutes[0]),
+                  _DigitWidget(digit: minutes[1]),
+                  _BlinkWidget(blink: blink),
+                  _DigitWidget(digit: seconds[0]),
+                  _DigitWidget(digit: seconds[1]),
                 ],
               ),
               CircleButton(
@@ -62,6 +53,63 @@ class TimerWidget extends StatelessWidget {
                 icon: Icons.stop,
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _DigitWidget extends StatelessWidget {
+  final String digit;
+  const _DigitWidget({required this.digit});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: 30,
+        child: Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            Opacity(
+              opacity: 0.15,
+              child: Text(
+                '8',
+                textAlign: TextAlign.right,
+                style: VLTextStyle.timer(color: VLColors.green700),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: digit == '1' ? 15 : 0),
+              child: Text(
+                digit,
+                textAlign: TextAlign.right,
+                style: VLTextStyle.timer(color: VLColors.green700),
+              ),
+            ),
+          ],
+        ));
+  }
+}
+
+class _BlinkWidget extends StatelessWidget {
+  final bool blink;
+  const _BlinkWidget({required this.blink});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 6, right: 3),
+      child: SizedBox(
+        width: 10,
+        child: Opacity(
+          opacity: blink ? 1 : 0.15,
+          child: Center(
+            child: Text(
+              ':',
+              textAlign: TextAlign.right,
+              style: VLTextStyle.timer(color: VLColors.green700),
+            ),
           ),
         ),
       ),
