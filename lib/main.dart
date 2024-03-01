@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:volley_log/features/score/score_page.dart';
+import 'package:match_point_volley_log/features/score/score_page.dart';
 
 void main() {
   runApp(const MyApp());

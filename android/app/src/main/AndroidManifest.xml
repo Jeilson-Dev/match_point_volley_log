@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="volley_log"
+        android:label="Match Point - Volley Log"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:volley_log/features/score/score_view_model.dart';
-import 'package:volley_log/theme/vl_colors.dart';
-import 'package:volley_log/theme/vl_text_styles.dart';
+import 'package:match_point_volley_log/features/score/score_view_model.dart';
+import 'package:match_point_volley_log/theme/vl_colors.dart';
+import 'package:match_point_volley_log/theme/vl_text_styles.dart';
 
 class ScorePage extends StatefulWidget {
   const ScorePage({super.key});
@@ -152,15 +152,7 @@ class ScoreTitleWidget extends StatelessWidget {
         color: color,
         borderRadius: const BorderRadius.all(Radius.circular(4)),
         elevation: !ballPossession ? 15 : 2,
-        child: SizedBox(
-          height: 40,
-          child: Center(
-            child: Text(
-              text,
-              style: VLTextStyle.scoreText(color: textColor),
-            ),
-          ),
-        ),
+        child: SizedBox(height: 40, child: Center(child: Text(text, style: VLTextStyle.scoreText(color: textColor)))),
       ),
     );
   }
@@ -188,20 +180,11 @@ class CircleButton extends StatelessWidget {
       shape: const CircleBorder(),
       elevation: 10,
       child: InkWell(
-        overlayColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.pressed)) {
-            return VLColors.green200;
-          }
-          return null;
-        }),
-        borderRadius: BorderRadius.circular(100),
         onTap: onPress,
         onLongPress: onLongPress,
-        child: SizedBox(
-          height: 60,
-          width: 60,
-          child: Icon(icon, color: iconColor),
-        ),
+        borderRadius: BorderRadius.circular(100),
+        overlayColor: MaterialStateProperty.resolveWith((states) => states.contains(MaterialState.pressed) ? VLColors.green200 : null),
+        child: SizedBox(height: 60, width: 60, child: Icon(icon, color: iconColor)),
       ),
     );
   }
@@ -240,13 +223,7 @@ class TimerWidget extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  SizedBox(
-                    width: 65,
-                    child: Text(
-                      minutes,
-                      style: VLTextStyle.timer(color: VLColors.green700),
-                    ),
-                  ),
+                  SizedBox(width: 65, child: Text(minutes, style: VLTextStyle.timer(color: VLColors.green700))),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 6.0),
                     child: SizedBox(
@@ -259,13 +236,7 @@ class TimerWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 70,
-                    child: Text(
-                      seconds,
-                      style: VLTextStyle.timer(color: VLColors.green700),
-                    ),
-                  ),
+                  SizedBox(width: 70, child: Text(seconds, style: VLTextStyle.timer(color: VLColors.green700))),
                 ],
               ),
               CircleButton(
