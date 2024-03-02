@@ -16,6 +16,9 @@ migrate_working_dir/
 *.iws
 .idea/
 
+# ignore coverage
+coverage/
+
 
 # ignore ios folder
 ios/

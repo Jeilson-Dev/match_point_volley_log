@@ -3,7 +3,6 @@ import 'package:match_point_volley_log/models/dto.dart';
 import 'package:equatable/equatable.dart';
 
 part 'team_dto.freezed.dart';
-part 'team_dto.g.dart';
 
 @freezed
 class TeamDto extends Equatable with _$TeamDto {
@@ -18,6 +17,5 @@ class TeamDto extends Equatable with _$TeamDto {
   @override
   List<Object?> get props => [id, name, isPlayerOne, team];
 
-  factory TeamDto.fromJson(Map<String, Object?> json) => _$TeamDtoFromJson(json);
   factory TeamDto.fixture() => TeamDto(id: 'team_id', name: 'team_name', score: 0, team: [PlayerDto.fixture()], isPlayerOne: false);
 }

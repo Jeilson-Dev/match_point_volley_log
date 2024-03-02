@@ -79,22 +79,24 @@ class _SingleMatchPageState extends State<SingleMatchPage> {
               ],
             ),
             Positioned(
-                bottom: 140,
-                right: 30,
-                child: CircleButton(
-                  backgroundColor: VLColors.green50,
-                  iconColor: VLColors.green700,
-                  onPress: model!.incrementTeamBScore,
-                  onLongPress: model!.decrementTeamBScore,
-                )),
-            Positioned(
                 bottom: 30,
                 right: 140,
                 child: CircleButton(
+                  key: const Key('increment-team-a'),
                   backgroundColor: VLColors.green700,
                   iconColor: VLColors.green50,
                   onPress: model!.incrementTeamAScore,
                   onLongPress: model!.decrementTeamAScore,
+                )),
+            Positioned(
+                bottom: 140,
+                right: 30,
+                child: CircleButton(
+                  key: const Key('increment-team-b'),
+                  backgroundColor: VLColors.green50,
+                  iconColor: VLColors.green700,
+                  onPress: model!.incrementTeamBScore,
+                  onLongPress: model!.decrementTeamBScore,
                 )),
           ],
         ),

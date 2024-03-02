@@ -3,13 +3,13 @@
 all-tests : tests integration-tests
 
 tests : 
-	flutter test --coverage
+	rm -rf coverage && flutter test --coverage
 
 integration-tests : 
 	flutter test integration_test/app_test.dart
 
 lcov-ignore : 
-	lcov --remove coverage/lcov.info 'lib/core/*' 'lib/models/*.g.dart' -o coverage/lcov.info
+	lcov --remove coverage/lcov.info 'lib/core/*' 'lib/models/*.g.dart' -o coverage/lcov.info --ignore-errors unused
 
 
 lcov : tests lcov-ignore
