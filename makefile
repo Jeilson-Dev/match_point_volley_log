@@ -5,6 +5,10 @@ all-tests : tests integration-tests
 tests : 
 	rm -rf coverage && flutter test --coverage
 
+tests-ci-cd : 
+	rm -rf coverage && flutter test --coverage --dart-define=runningOnCICD=true
+
+
 integration-tests : 
 	flutter test integration_test/app_test.dart
 
