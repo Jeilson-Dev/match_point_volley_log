@@ -16,5 +16,5 @@ jobs:
       - run: flutter clean 
       - run: make gen
       - run: make l10n
-      - run: make tests
+      - run: make tests-ci-cd
 
